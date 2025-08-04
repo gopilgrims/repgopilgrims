@@ -7,7 +7,13 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
@@ -29,13 +35,14 @@ export default function ForgotPassword() {
 
   const forgotPasswordMutation = useMutation({
     mutationFn: async (data: ForgotPasswordForm) => {
-      return apiRequest('POST', '/api/auth/forgot-password', data);
+      return apiRequest("POST", "/api/auth/forgot-password", data);
     },
     onSuccess: () => {
       setIsSubmitted(true);
       toast({
         title: "Reset Link Sent",
-        description: "If an account exists with that email, a password reset link has been sent.",
+        description:
+          "If an account exists with that email, a password reset link has been sent.",
       });
     },
     onError: (error: any) => {
@@ -68,7 +75,8 @@ export default function ForgotPassword() {
             <Alert>
               <Mail className="h-4 w-4" />
               <AlertDescription>
-                If you don't see the email, check your spam folder. The reset link will expire in 1 hour.
+                If you don't see the email, check your spam folder. The reset
+                link will expire in 1 hour.
               </AlertDescription>
             </Alert>
             <div className="text-center">
@@ -91,7 +99,8 @@ export default function ForgotPassword() {
         <CardHeader className="text-center">
           <CardTitle className="text-2xl">Forgot Password</CardTitle>
           <CardDescription>
-            Enter your email address and we'll send you a link to reset your password.
+            Enter your email address and we'll send you a link to reset your
+            password.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -112,9 +121,9 @@ export default function ForgotPassword() {
               )}
             </div>
 
-            <Button 
-              type="submit" 
-              className="w-full" 
+            <Button
+              type="submit"
+              className="w-full"
               disabled={forgotPasswordMutation.isPending}
             >
               {forgotPasswordMutation.isPending ? (

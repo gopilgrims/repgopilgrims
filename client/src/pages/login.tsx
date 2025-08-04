@@ -5,30 +5,36 @@ import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Loader2, Mail, Eye, EyeOff, AlertCircle } from "lucide-react";
 import { Link, useLocation } from "wouter";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
-
-const loginSchema = z.object({
-  email: z.string().email("Please enter a valid email address"),
-  password: z.string().min(6, "Password must be at least 6 characters"),
-});
-
-type LoginFormData = z.infer<typeof loginSchema>;
+import { useTranslation } from "@/lib/i18n";
 
 export default function Login() {
   const [, setLocation] = useLocation();
   const { toast } = useToast();
+  const { t } = useTranslation();
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
   const form = useForm<LoginFormData>({
-    resolver: zodResolver(loginSchema),
+    resolver: zodResolver(
+      z.object({
+        email: z.string().email(t("auth.validEmailRequired")),
+        password: z.string().min(6, t("auth.passwordMinLength")),
+      })
+    ),
     defaultValues: {
       email: "",
       password: "",
@@ -42,17 +48,17 @@ export default function Login() {
     try {
       const response = await apiRequest("POST", "/api/auth/login", data);
       const result = await response.json();
-      
+
       // Store token in localStorage
       if (result.token) {
         localStorage.setItem("auth_token", result.token);
       }
-      
+
       toast({
-        title: "Welcome back!",
-        description: "You have been successfully logged in.",
+        title: t("auth.welcomeBackToast"),
+        description: t("auth.loginSuccessMessage"),
       });
-      
+
       // Force refresh the auth state
       window.location.href = "/";
     } catch (err: any) {
@@ -77,10 +83,10 @@ export default function Login() {
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl font-bold text-gray-900">
-            Welcome Back
+            {t("auth.welcomeBack")}
           </CardTitle>
           <CardDescription>
-            Sign in to your GoPilgrims.com account
+            {t("auth.signInToAccount")}
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
@@ -144,29 +150,31 @@ export default function Login() {
           {/* Email/Password Form */}
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email">{t("auth.email")}</Label>
               <div className="relative">
                 <Mail className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
                 <Input
                   id="email"
                   type="email"
-                  placeholder="Enter your email"
+                  placeholder={t("auth.enterYourEmail")}
                   className="pl-10"
                   {...form.register("email")}
                 />
               </div>
               {form.formState.errors.email && (
-                <p className="text-sm text-red-600">{form.formState.errors.email.message}</p>
+                <p className="text-sm text-red-600">
+                  {form.formState.errors.email.message}
+                </p>
               )}
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password">{t("auth.password")}</Label>
               <div className="relative">
                 <Input
                   id="password"
                   type={showPassword ? "text" : "password"}
-                  placeholder="Enter your password"
+                  placeholder={t("auth.enterYourPassword")}
                   className="pr-10"
                   {...form.register("password")}
                 />
@@ -175,34 +183,42 @@ export default function Login() {
                   onClick={() => setShowPassword(!showPassword)}
                   className="absolute right-3 top-3 text-gray-400 hover:text-gray-600"
                 >
-                  {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                  {showPassword ? (
+                    <EyeOff className="h-4 w-4" />
+                  ) : (
+                    <Eye className="h-4 w-4" />
+                  )}
                 </button>
               </div>
               {form.formState.errors.password && (
-                <p className="text-sm text-red-600">{form.formState.errors.password.message}</p>
+                <p className="text-sm text-red-600">
+                  {form.formState.errors.password.message}
+                </p>
               )}
             </div>
 
             <div className="flex items-center justify-between">
-              <Link href="/forgot-password" className="text-sm text-primary hover:underline">
-                Forgot password?
+              <Link
+                href="/forgot-password"
+                className="text-sm text-primary hover:underline"
+              >
+                {t("auth.forgotPassword")}
               </Link>
             </div>
 
-            <Button
-              type="submit"
-              className="w-full"
-              disabled={isLoading}
-            >
+            <Button type="submit" className="w-full" disabled={isLoading}>
               {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-              Sign In
+              {t("auth.signIn")}
             </Button>
           </form>
 
           <div className="text-center text-sm">
-            <span className="text-gray-600">Don't have an account? </span>
-            <Link href="/register" className="text-primary hover:underline font-medium">
-              Sign up
+            <span className="text-gray-600">{t("auth.dontHaveAccount")} </span>
+            <Link
+              href="/register"
+              className="text-primary hover:underline font-medium"
+            >
+              {t("auth.signUp")}
             </Link>
           </div>
         </CardContent>

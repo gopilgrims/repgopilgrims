@@ -8,7 +8,14 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Separator } from "@/components/ui/separator";
@@ -16,24 +23,27 @@ import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { insertOrganizerSchema, insertUserSchema } from "@shared/schema";
-import { 
-  Shield, 
-  Star, 
-  CheckCircle, 
-  Building, 
-  Mail, 
-  Phone, 
-  Globe, 
+import {
+  Shield,
+  Star,
+  CheckCircle,
+  Building,
+  Mail,
+  Phone,
+  Globe,
   Calendar,
   Award,
-  Users
+  Users,
 } from "lucide-react";
 
 // Combined schema for user + organizer registration
 const organizerSignupSchema = insertUserSchema.extend({
   companyName: z.string().min(1, "Company name is required"),
   description: z.string().min(50, "Description must be at least 50 characters"),
-  yearsExperience: z.number().min(1, "Years of experience must be at least 1").max(50, "Years of experience seems too high"),
+  yearsExperience: z
+    .number()
+    .min(1, "Years of experience must be at least 1")
+    .max(50, "Years of experience seems to high"),
   contactEmail: z.string().email("Invalid email address"),
   contactPhone: z.string().min(1, "Phone number is required"),
   website: z.string().url("Invalid website URL").optional().or(z.literal("")),
@@ -78,13 +88,14 @@ export default function OrganizerSignup() {
           contactEmail: data.contactEmail,
           contactPhone: data.contactPhone,
           website: data.website || undefined,
-        }
+        },
       });
     },
     onSuccess: () => {
       toast({
         title: "Registration successful!",
-        description: "Please check your email to verify your account. After verification, your organizer profile will be reviewed within 48 hours.",
+        description:
+          "Please check your email to verify your account. After verification, your organizer profile will be reviewed within 48 hours.",
       });
       setIsSubmitted(true);
     },
@@ -105,7 +116,7 @@ export default function OrganizerSignup() {
     return (
       <div className="min-h-screen bg-gray-50">
         <Header />
-        
+
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <Card className="text-center">
             <CardContent className="pt-6">
@@ -116,11 +127,16 @@ export default function OrganizerSignup() {
                 Welcome to Pilgrimage Connect!
               </h1>
               <p className="text-gray-600 mb-6">
-                Your organizer profile has been submitted successfully. Please check your email to verify your account. After email verification, our team will review your credentials and verify your account within 48 hours. 
-                You'll receive an email confirmation once your account is approved.
+                Your organizer profile has been submitted successfully. Please
+                check your email to verify your account. After email
+                verification, our team will review your credentials and verify
+                your account within 48 hours. You'll receive an email
+                confirmation once your account is approved.
               </p>
               <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
-                <h3 className="font-semibold text-blue-900 mb-2">What happens next?</h3>
+                <h3 className="font-semibold text-blue-900 mb-2">
+                  What happens next?
+                </h3>
                 <ul className="text-sm text-blue-800 text-left space-y-1">
                   <li>• We'll verify your credentials and experience</li>
                   <li>• Check your references and certifications</li>
@@ -134,7 +150,7 @@ export default function OrganizerSignup() {
             </CardContent>
           </Card>
         </div>
-        
+
         <Footer />
       </div>
     );
@@ -143,20 +159,20 @@ export default function OrganizerSignup() {
   return (
     <div className="min-h-screen bg-gray-50">
       <Header />
-      
+
       {/* Hero Section */}
       <section className="bg-primary text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-3xl md:text-4xl font-bold mb-4">
-            Join Our Network of Trusted Organizers
+            {t("organizerSignup.hero.title")}
           </h1>
           <p className="text-xl opacity-90 max-w-2xl mx-auto">
-            Connect with pilgrims worldwide and grow your pilgrimage business with our verified platform
+            {t("organizerSignup.hero.subtitle")}
           </p>
         </div>
       </section>
 
-      {/* Benefits Section */}
+      {/* Benefits Section 
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
@@ -185,21 +201,26 @@ export default function OrganizerSignup() {
             </div>
           </div>
         </div>
-      </section>
+      </section>*/}
 
       {/* Registration Form */}
       <section className="py-12">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <Card>
             <CardHeader>
-              <CardTitle className="text-2xl text-center">Organizer Registration</CardTitle>
+              <CardTitle className="text-2xl text-center">
+                {t("organizerSignup.form.title")}
+              </CardTitle>
               <p className="text-center text-gray-600">
-                Please provide accurate information for verification purposes
+                {t("organizerSignup.form.subtitle")}
               </p>
             </CardHeader>
             <CardContent>
               <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                <form
+                  onSubmit={form.handleSubmit(onSubmit)}
+                  className="space-y-6"
+                >
                   {/* Account Information */}
                   <div>
                     <h3 className="text-lg font-semibold mb-4 flex items-center">
@@ -214,7 +235,10 @@ export default function OrganizerSignup() {
                           <FormItem>
                             <FormLabel>Username</FormLabel>
                             <FormControl>
-                              <Input placeholder="your-company-username" {...field} />
+                              <Input
+                                placeholder="your-company-username"
+                                {...field}
+                              />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -228,7 +252,11 @@ export default function OrganizerSignup() {
                           <FormItem>
                             <FormLabel>Email Address</FormLabel>
                             <FormControl>
-                              <Input type="email" placeholder="admin@yourcompany.com" {...field} />
+                              <Input
+                                type="email"
+                                placeholder="admin@yourcompany.com"
+                                {...field}
+                              />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -243,7 +271,11 @@ export default function OrganizerSignup() {
                         <FormItem>
                           <FormLabel>Password</FormLabel>
                           <FormControl>
-                            <Input type="password" placeholder="Create a secure password" {...field} />
+                            <Input
+                              type="password"
+                              placeholder="Create a secure password"
+                              {...field}
+                            />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -259,7 +291,7 @@ export default function OrganizerSignup() {
                       <Building className="w-5 h-5 mr-2" />
                       Company Information
                     </h3>
-                    
+
                     <FormField
                       control={form.control}
                       name="companyName"
@@ -267,7 +299,10 @@ export default function OrganizerSignup() {
                         <FormItem>
                           <FormLabel>Company Name</FormLabel>
                           <FormControl>
-                            <Input placeholder="Sacred Journeys Tours Ltd." {...field} />
+                            <Input
+                              placeholder="Sacred Journeys Tours Ltd."
+                              {...field}
+                            />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -281,10 +316,10 @@ export default function OrganizerSignup() {
                         <FormItem>
                           <FormLabel>Company Description</FormLabel>
                           <FormControl>
-                            <Textarea 
+                            <Textarea
                               placeholder="Describe your company, services, and experience in organizing pilgrimage trips..."
                               className="min-h-[100px]"
-                              {...field} 
+                              {...field}
                             />
                           </FormControl>
                           <FormMessage />
@@ -300,13 +335,15 @@ export default function OrganizerSignup() {
                           <FormItem>
                             <FormLabel>Years of Experience</FormLabel>
                             <FormControl>
-                              <Input 
-                                type="number" 
-                                min="1" 
+                              <Input
+                                type="number"
+                                min="1"
                                 max="50"
-                                placeholder="15" 
+                                placeholder="15"
                                 {...field}
-                                onChange={(e) => field.onChange(parseInt(e.target.value) || 1)}
+                                onChange={(e) =>
+                                  field.onChange(parseInt(e.target.value) || 1)
+                                }
                               />
                             </FormControl>
                             <FormMessage />
@@ -321,10 +358,10 @@ export default function OrganizerSignup() {
                           <FormItem>
                             <FormLabel>Website (Optional)</FormLabel>
                             <FormControl>
-                              <Input 
-                                type="url" 
-                                placeholder="https://www.yourcompany.com" 
-                                {...field} 
+                              <Input
+                                type="url"
+                                placeholder="https://www.yourcompany.com"
+                                {...field}
                               />
                             </FormControl>
                             <FormMessage />
@@ -342,7 +379,7 @@ export default function OrganizerSignup() {
                       <Mail className="w-5 h-5 mr-2" />
                       Contact Information
                     </h3>
-                    
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <FormField
                         control={form.control}
@@ -351,7 +388,11 @@ export default function OrganizerSignup() {
                           <FormItem>
                             <FormLabel>Business Email</FormLabel>
                             <FormControl>
-                              <Input type="email" placeholder="bookings@yourcompany.com" {...field} />
+                              <Input
+                                type="email"
+                                placeholder="bookings@yourcompany.com"
+                                {...field}
+                              />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -365,7 +406,11 @@ export default function OrganizerSignup() {
                           <FormItem>
                             <FormLabel>Business Phone</FormLabel>
                             <FormControl>
-                              <Input type="tel" placeholder="+1 (555) 123-4567" {...field} />
+                              <Input
+                                type="tel"
+                                placeholder="+1 (555) 123-4567"
+                                {...field}
+                              />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -383,29 +428,35 @@ export default function OrganizerSignup() {
                       Verification Process
                     </h3>
                     <p className="text-sm text-blue-800 mb-3">
-                      After registration, our team will verify your credentials. Please have the following ready:
+                      After registration, our team will verify your credentials.
+                      Please have the following ready:
                     </p>
                     <ul className="text-sm text-blue-800 space-y-1">
                       <li>• Business registration documents</li>
                       <li>• Travel operator license</li>
                       <li>• Insurance certificates</li>
                       <li>• References from previous clients</li>
-                      <li>• Religious authority endorsements (if applicable)</li>
+                      <li>
+                        • Religious authority endorsements (if applicable)
+                      </li>
                     </ul>
                   </div>
 
-                  <Button 
-                    type="submit" 
-                    className="w-full bg-primary text-white hover:bg-primary/90" 
+                  <Button
+                    type="submit"
+                    className="w-full bg-primary text-white hover:bg-primary/90"
                     size="lg"
                     disabled={signupMutation.isPending}
                   >
-                    {signupMutation.isPending ? 'Creating Account...' : 'Register as Organizer'}
+                    {signupMutation.isPending
+                      ? "Creating Account..."
+                      : "Register as Organizer"}
                   </Button>
 
                   <p className="text-xs text-gray-500 text-center">
-                    By registering, you agree to our Terms of Service and Privacy Policy. 
-                    Your account will be reviewed within 48 hours.
+                    By registering, you agree to our Terms of Service and
+                    Privacy Policy. Your account will be reviewed within 48
+                    hours.
                   </p>
                 </form>
               </Form>

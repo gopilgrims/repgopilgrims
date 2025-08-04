@@ -46,17 +46,10 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-primary to-blue-700 text-white py-20">
         {/* Background pattern overlay */}
-        <div className="absolute inset-0 opacity-10">
-          <div
-            className="w-full h-full"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><pattern id='pattern' patternUnits='userSpaceOnUse' width='20' height='20'><polygon points='10,0 20,10 10,20 0,10' fill='white' opacity='0.1'/></pattern><rect width='100' height='100' fill='url(%23pattern)'/></svg>")`,
-              backgroundSize: "40px 40px",
-            }}
-          />
-        </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          {/* Organizer CTA Banner */}
+
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
             {t("home.hero.title")}
             <br />
@@ -67,10 +60,79 @@ export default function Home() {
           <p className="text-xl md:text-2xl mb-8 opacity-90 max-w-3xl mx-auto">
             {t("home.hero.description")}
           </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            {/* Organizer Card - 50% width */}
+            <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow border border-gray-200">
+              <div className="text-center">
+                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                  {t("home.cta.forOrganizers")}
+                </h3>
+                <p className="text-gray-600 mb-4 text-sm leading-relaxed">
+                  {t("home.cta.organizerDescription")}
+                </p>
+                <ul className="text-xs text-gray-600 mb-6 space-y-1 text-left">
+                  <li className="flex items-center">
+                    <Star className="w-3 h-3 text-green-600 mr-1 flex-shrink-0 fill-current" />
+                    {t("home.features.listPackages")}
+                  </li>
+                  <li className="flex items-center">
+                    <Star className="w-3 h-3 text-green-600 mr-1 flex-shrink-0 fill-current" />
+                    {t("home.features.reachPilgrims")}
+                  </li>
+                  <li className="flex items-center">
+                    <Star className="w-3 h-3 text-green-600 mr-1 flex-shrink-0 fill-current" />
+                    {t("home.features.manageBookings")}
+                  </li>
+                  <li className="flex items-center">
+                    <Star className="w-3 h-3 text-green-600 mr-1 flex-shrink-0 fill-current" />
+                    {t("home.features.buildReputation")}
+                  </li>
+                </ul>
+                <Link href="/organizer-signup">
+                  <Button className="w-full bg-primary hover:bg-primary/90 text-white font-semibold text-lg py-3">
+                    {t("home.cta.organizerSignUp")}
+                  </Button>
+                </Link>
+              </div>
+            </div>
 
-          <SearchForm />
+            {/* Pilgrim Card - 50% width */}
+            <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow border border-gray-200">
+              <div className="text-center">
+                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                  {t("home.cta.forPilgrims")}
+                </h3>
+                <p className="text-gray-600 mb-4 text-sm leading-relaxed">
+                  {t("home.cta.pilgrimDescription")}
+                </p>
+                <ul className="text-xs text-gray-600 mb-6 space-y-1 text-left">
+                  <li className="flex items-center">
+                    <Star className="w-3 h-3 text-green-600 mr-1 flex-shrink-0 fill-current" />
+                    {t("home.features.browseVerified")}
+                  </li>
+                  <li className="flex items-center">
+                    <Star className="w-3 h-3 text-green-600 mr-1 flex-shrink-0 fill-current" />
+                    {t("home.features.comparePrices")}
+                  </li>
+                  <li className="flex items-center">
+                    <Star className="w-3 h-3 text-green-600 mr-1 flex-shrink-0 fill-current" />
+                    {t("home.features.readReviews")}
+                  </li>
+                  <li className="flex items-center">
+                    <Star className="w-3 h-3 text-green-600 mr-1 flex-shrink-0 fill-current" />
+                    {t("home.features.secureBooking")}
+                  </li>
+                </ul>
 
-          {/* Trust indicators */}
+                <Link href="/trips">
+                  <Button className="w-full bg-primary hover:bg-primary/90 text-white font-semibold text-lg py-3">
+                    {t("home.cta.pilgrimSignUp")}
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+          {/* Trust indicators 
           <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-2xl mx-auto">
             <div className="text-center">
               <div className="text-3xl font-bold">15K+</div>
@@ -95,6 +157,7 @@ export default function Home() {
               </div>
             </div>
           </div>
+          */}
         </div>
       </section>
 
@@ -156,7 +219,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="text-center">
               <div className="bg-primary text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Shield className="w-8 h-8" />
@@ -164,14 +227,12 @@ export default function Home() {
               <h3 className="text-xl font-bold text-gray-900 mb-3">
                 {t("home.trust.verified")}
               </h3>
-              <p className="text-gray-600">
-                {t("home.features.verifiedDesc")}
-              </p>
+              <p className="text-gray-600">{t("home.features.verifiedDesc")}</p>
             </div>
 
             <div className="text-center">
-              <div className="bg-verified text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Star className="w-8 h-8" />
+              <div className="bg-yellow-500 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Star className="w-8 h-8 fill-current" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">
                 {t("home.trust.reviews")}
@@ -181,17 +242,15 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="text-center">
+            {/* <div className="text-center">
               <div className="bg-accent-orange text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Lock className="w-8 h-8" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">
                 {t("home.trust.payments")}
               </h3>
-              <p className="text-gray-600">
-                {t("home.features.secureDesc")}
-              </p>
-            </div>
+              <p className="text-gray-600">{t("home.features.secureDesc")}</p>
+            </div> */}
 
             <div className="text-center">
               <div className="bg-blue-700 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -200,9 +259,7 @@ export default function Home() {
               <h3 className="text-xl font-bold text-gray-900 mb-3">
                 {t("home.trust.support")}
               </h3>
-              <p className="text-gray-600">
-                {t("home.features.supportDesc")}
-              </p>
+              <p className="text-gray-600">{t("home.features.supportDesc")}</p>
             </div>
           </div>
         </div>
@@ -267,98 +324,6 @@ export default function Home() {
           </div>
         </div>
       </section>*/}
-
-      {/* Call to Action - Segregated User Types */}
-      <section className="py-16 bg-gray-100">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              {t("home.cta.title")}
-            </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              {t("home.cta.description")}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {/* Pilgrim Card */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border border-gray-200">
-              <div className="text-center">
-                <div className="bg-primary text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Shield className="w-8 h-8" />
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                  {t("home.cta.forPilgrims")}
-                </h3>
-                <p className="text-gray-600 mb-6 leading-relaxed">
-                  {t("home.cta.pilgrimDescription")}
-                </p>
-                <ul className="text-sm text-gray-600 mb-8 space-y-2 text-left">
-                  <li className="flex items-center">
-                    <Star className="w-4 h-4 text-verified mr-2" />
-                    {t("home.features.browseVerified")}
-                  </li>
-                  <li className="flex items-center">
-                    <Star className="w-4 h-4 text-verified mr-2" />
-                    {t("home.features.comparePrices")}
-                  </li>
-                  <li className="flex items-center">
-                    <Star className="w-4 h-4 text-verified mr-2" />
-                    {t("home.features.readReviews")}
-                  </li>
-                  <li className="flex items-center">
-                    <Star className="w-4 h-4 text-verified mr-2" />
-                    {t("home.features.secureBooking")}
-                  </li>
-                </ul>
-                <Link href="/register">
-                  <Button className="w-full bg-primary hover:bg-primary/90 text-white font-semibold text-lg py-3">
-                    {t("home.cta.pilgrimSignUp")}
-                  </Button>
-                </Link>
-              </div>
-            </div>
-
-            {/* Organizer Card */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border border-gray-200">
-              <div className="text-center">
-                <div className="bg-accent-orange text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Headphones className="w-8 h-8" />
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                  {t("home.cta.forOrganizers")}
-                </h3>
-                <p className="text-gray-600 mb-6 leading-relaxed">
-                  {t("home.cta.organizerDescription")}
-                </p>
-                <ul className="text-sm text-gray-600 mb-8 space-y-2 text-left">
-                  <li className="flex items-center">
-                    <Star className="w-4 h-4 text-verified mr-2" />
-                    {t("home.features.listPackages")}
-                  </li>
-                  <li className="flex items-center">
-                    <Star className="w-4 h-4 text-verified mr-2" />
-                    {t("home.features.reachPilgrims")}
-                  </li>
-                  <li className="flex items-center">
-                    <Star className="w-4 h-4 text-verified mr-2" />
-                    {t("home.features.manageBookings")}
-                  </li>
-                  <li className="flex items-center">
-                    <Star className="w-4 h-4 text-verified mr-2" />
-                    {t("home.features.buildReputation")}
-                  </li>
-                </ul>
-                <Link href="/organizer-signup">
-                  <Button className="w-full bg-accent-orange hover:bg-accent-orange/90 text-white font-semibold text-lg py-3">
-                    {t("home.cta.organizerSignUp")}
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <Footer />
     </div>
