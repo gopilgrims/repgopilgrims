@@ -1,0 +1,78 @@
+Console.js:61 Button clicked, profileForm: {companyName: 'As seraat', description: 'tour operator tour operator tour operator tour ope…erator tour operator tour operator tour operator ', yearsExperience: 6, contactEmail: 'ja1981temp@gmail.com', contactPhone: '+971559776052', …}
+Console.js:61 Starting profile update with data: {companyName: 'As seraat', description: 'tour operator tour operator tour operator tour ope…erator tour operator tour operator tour operator ', yearsExperience: 6, contactEmail: 'ja1981temp@gmail.com', contactPhone: '+971559776052', …}
+Console.js:61 Uploading logo file: iran.1.jpg
+Console.js:61 Logo upload successful: {url: 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD…M5+zzMm/rtNT6V4q1G105tNQRmJs9RzWFPPNNMWkfJzSA/9k='}
+Console.js:61 Updating organizer profile with data: {companyName: 'As seraat', description: 'tour operator tour operator tour operator tour ope…erator tour operator tour operator tour operator ', yearsExperience: 6, contactEmail: 'ja1981temp@gmail.com', contactPhone: '+971559776052', …}
+Console.js:61 Profile update error: SyntaxError: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
+Mt.forEach.n.<computed> @ Console.js:61
+mutationFn @ organizer-dashboard.tsx:184
+await in mutationFn
+fn @ @tanstack_react-query.js?v=5aeca8d1:1189
+run @ @tanstack_react-query.js?v=5aeca8d1:494
+start @ @tanstack_react-query.js?v=5aeca8d1:536
+execute @ @tanstack_react-query.js?v=5aeca8d1:1225
+await in execute
+mutate @ @tanstack_react-query.js?v=5aeca8d1:2630
+(anonymous) @ @tanstack_react-query.js?v=5aeca8d1:3295
+onClick @ organizer-dashboard.tsx:1676
+callCallback2 @ chunk-RPCDYKBN.js?v=5aeca8d1:3674
+invokeGuardedCallbackDev @ chunk-RPCDYKBN.js?v=5aeca8d1:3699
+invokeGuardedCallback @ chunk-RPCDYKBN.js?v=5aeca8d1:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-RPCDYKBN.js?v=5aeca8d1:3736
+executeDispatch @ chunk-RPCDYKBN.js?v=5aeca8d1:7014
+processDispatchQueueItemsInOrder @ chunk-RPCDYKBN.js?v=5aeca8d1:7034
+processDispatchQueue @ chunk-RPCDYKBN.js?v=5aeca8d1:7043
+dispatchEventsForPlugins @ chunk-RPCDYKBN.js?v=5aeca8d1:7051
+(anonymous) @ chunk-RPCDYKBN.js?v=5aeca8d1:7174
+batchedUpdates$1 @ chunk-RPCDYKBN.js?v=5aeca8d1:18913
+batchedUpdates @ chunk-RPCDYKBN.js?v=5aeca8d1:3579
+dispatchEventForPluginEventSystem @ chunk-RPCDYKBN.js?v=5aeca8d1:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-RPCDYKBN.js?v=5aeca8d1:5478
+dispatchEvent @ chunk-RPCDYKBN.js?v=5aeca8d1:5472
+dispatchDiscreteEvent @ chunk-RPCDYKBN.js?v=5aeca8d1:5449
+Console.js:61 Profile update mutation error: Error: Failed to update profile. Please try again.
+    at Object.mutationFn (organizer-dashboard.tsx:185:15)
+Mt.forEach.n.<computed> @ Console.js:61
+onError @ organizer-dashboard.tsx:204
+execute @ @tanstack_react-query.js?v=5aeca8d1:1254
+await in execute
+mutate @ @tanstack_react-query.js?v=5aeca8d1:2630
+(anonymous) @ @tanstack_react-query.js?v=5aeca8d1:3295
+onClick @ organizer-dashboard.tsx:1676
+callCallback2 @ chunk-RPCDYKBN.js?v=5aeca8d1:3674
+invokeGuardedCallbackDev @ chunk-RPCDYKBN.js?v=5aeca8d1:3699
+invokeGuardedCallback @ chunk-RPCDYKBN.js?v=5aeca8d1:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-RPCDYKBN.js?v=5aeca8d1:3736
+executeDispatch @ chunk-RPCDYKBN.js?v=5aeca8d1:7014
+processDispatchQueueItemsInOrder @ chunk-RPCDYKBN.js?v=5aeca8d1:7034
+processDispatchQueue @ chunk-RPCDYKBN.js?v=5aeca8d1:7043
+dispatchEventsForPlugins @ chunk-RPCDYKBN.js?v=5aeca8d1:7051
+(anonymous) @ chunk-RPCDYKBN.js?v=5aeca8d1:7174
+batchedUpdates$1 @ chunk-RPCDYKBN.js?v=5aeca8d1:18913
+batchedUpdates @ chunk-RPCDYKBN.js?v=5aeca8d1:3579
+dispatchEventForPluginEventSystem @ chunk-RPCDYKBN.js?v=5aeca8d1:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-RPCDYKBN.js?v=5aeca8d1:5478
+dispatchEvent @ chunk-RPCDYKBN.js?v=5aeca8d1:5472
+dispatchDiscreteEvent @ chunk-RPCDYKBN.js?v=5aeca8d1:5449
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
